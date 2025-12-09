@@ -19,5 +19,11 @@ module.exports = produtosService = {
 
   deletarProduto: async (id) => {
     await conexaoDB("tbprodutos").where("idProduto", id).del();
+  },
+
+  atualizarProduto: async (id, oQueAlterar) => {
+    const produto = await conexaoDB("tbprodutos").where("idProduto", id).update(oQueAlterar);
+
+    return produto;
   }
 };

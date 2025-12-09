@@ -42,4 +42,22 @@ module.exports = {
     
     res.status(200).json({ message: "Produto excluído!" });
   },
+
+  alterarProduto: async (req, res) => {
+    const { nome, preco, idFornecedor } = req.body  
+
+    const produtoAtualizado = {
+      // id: Date.now(),
+      nome,
+      preco,
+      idFornecedor
+    }
+
+    const produto = await produtosService.atualizarProduto(req.params.id, produtoAtualizado)
+
+    res.status(200).json({
+      message: "dados do produto alterados",
+      produto: produto
+    })
+  }
 };
