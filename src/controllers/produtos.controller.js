@@ -28,11 +28,11 @@ module.exports = {
       idFornecedor
     }
 
-    const produto = await produtosService.inserirProduto(novoProduto);
+    await produtosService.inserirProduto(novoProduto);
 
     res.status(200).json({
       message: "Produto cadastrado!",
-      produto: produto
+      produto: novoProduto
     })
   },
 
@@ -43,21 +43,21 @@ module.exports = {
     res.status(200).json({ message: "Produto excluído!" });
   },
 
-  alterarProduto: async (req, res) => {
+  atualizarProduto: async (req, res) => {
     const { nome, preco, idFornecedor } = req.body  
 
-    const produtoAtualizado = {
+    const dados = {
       // id: Date.now(),
       nome,
       preco,
       idFornecedor
     }
 
-    const produto = await produtosService.atualizarProduto(req.params.id, produtoAtualizado)
+    await produtosService.atualizarProduto(req.params.id, dados)
 
     res.status(200).json({
-      message: "dados do produto alterados",
-      produto: produto
+      message: "Dados do produto alterados",
+      produto: dados
     })
   }
 };
