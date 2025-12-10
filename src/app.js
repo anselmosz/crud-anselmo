@@ -7,4 +7,7 @@ app.use(express.json());
 const produtoRoutes = require('./routes/produtos.routes');
 app.use('/produtos', produtoRoutes);
 
+const fornecedoresRoutes = require('./routes/fornecedores.routes');
+app.use('/fornecedores', fornecedoresRoutes);
+
 module.exports = app;

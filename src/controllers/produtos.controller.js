@@ -1,4 +1,4 @@
-const produtosService = require("../service/produtosService");
+const produtosService = require("../services/produtos.service");
 
 module.exports = {
   listarProdutos: async (req, res) => {
