@@ -3,8 +3,8 @@ const router = express.Router();
 const fornecedoresController = require('../controllers/fornecedores.controller');
 
 // Rotas REST - CRUD da tabela de fornecedores
-// router.get('/',);
-// router.get('/:id', ); 
+router.get('/', fornecedoresController.listarFornecedores);
+router.get('/:id', fornecedoresController.buscarFornecedorPorId); 
 // router.post('/', .); 
 // router.delete('/:id', );
 // router.put('/:id', ); 
