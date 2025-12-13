@@ -6,6 +6,11 @@ USE crudanselmo;
 CREATE TABLE tbfornecedores(
   idFornecedor INT(10) NOT NULL AUTO_INCREMENT,
   nome VARCHAR(255),
+  email VARCHAR(255),
+  telefone CHAR(14), -- o telefone está no padrão "+5511911112222"
+  endereco VARCHAR(255),
+  cidade VARCHAR(255),
+  cnpj CHAR(18),
   PRIMARY KEY(idFornecedor)
 );
 
@@ -53,5 +58,5 @@ CREATE TABLE tbvendas(
   FOREIGN KEY(idUsuario) REFERENCES tbusuarios(idUsuario)
 );
 
-insert into tbfornecedores(nome) values("camil distribuidora");
+insert into tbfornecedores(nome, email, telefone, endereco, cidade, cnpj) values("O Fornecedor", "atendimento@ofornecedor.com", "+5511912345678", "Rua da Concordia, 3132", "São Paulo - SP", "10.100.200/0001-00");
 insert into tbprodutos(nome, preco, idFornecedor) values("arroz", 29, 1);

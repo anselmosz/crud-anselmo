@@ -18,12 +18,13 @@ module.exports = produtosService = {
   },
 
   deletarProduto: async (id) => {
-    await conexaoDB("tbprodutos").where("idProduto", id).del();
+    const linhasAfetadas = await conexaoDB("tbprodutos").where("idProduto", id).del();
+    return linhasAfetadas;
   },
 
-  atualizarProduto: async (id, oQueAlterar) => {
-    const produto = await conexaoDB("tbprodutos").where("idProduto", id).update(oQueAlterar);
+  atualizarProduto: async (id, dados) => {
+    const produtoAtualizado = await conexaoDB("tbprodutos").where("idProduto", id).update(dados);
 
-    return produto;
-  }
+    return produtoAtualizado;
+  },
 };

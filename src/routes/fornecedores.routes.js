@@ -5,8 +5,8 @@ const fornecedoresController = require('../controllers/fornecedores.controller')
 // Rotas REST - CRUD da tabela de fornecedores
 router.get('/', fornecedoresController.listarFornecedores);
 router.get('/:id', fornecedoresController.buscarFornecedorPorId); 
-// router.post('/', .); 
-// router.delete('/:id', );
-// router.put('/:id', ); 
+router.post('/', fornecedoresController.inserirFornecedor); 
+router.put('/:id', fornecedoresController.atualizarFornecedor); 
+router.delete('/:id', fornecedoresController.deletarFornecedor);
 
 module.exports = router;

@@ -37,27 +37,28 @@ module.exports = {
   },
 
   deletarProduto: async (req, res) => {
-    const produto = await produtosService.deletarProduto(req.params.id);
-    if (!produto || produto.length === 0) return res.status(404).json({ message: "Dados não encontrados" });
+    const linhasAfetadas = await produtosService.deletarProduto(req.params.id);
+    if (linhasAfetadas === 0) return res.status(404).json({ message: "Dados não encontrados" });
     
     res.status(200).json({ message: "Produto excluído!" });
   },
 
   atualizarProduto: async (req, res) => {
-    const { nome, preco, idFornecedor } = req.body  
+    const { nome, preco, idFornecedor } = req.body;
 
     const dados = {
-      // id: Date.now(),
       nome,
       preco,
       idFornecedor
     }
-
-    await produtosService.atualizarProduto(req.params.id, dados)
+    
+    const produtoAtualizado = await produtosService.atualizarProduto(req.params.id, dados);
+    
+    if (!produtoAtualizado) return res.status(404).json({message: "Dados não encontrados"});
 
     res.status(200).json({
-      message: "Dados do produto alterados",
-      produto: dados
+      "message": "Dados do produto alterados",
+      "Dados do produto": dados
     })
   }
 };
